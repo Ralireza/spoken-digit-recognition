@@ -20,6 +20,7 @@ Classifying English spoken digit by Hidden Markov Model
 
 
 ## General Step
+this is for curious guys and implement by themselves.
 * Downlaod dataset from [Kaggle](https://www.kaggle.com/divyanshu99/spoken-digit-dataset)
 * Extract feature of each data with mfcc
 * Train Hmm states by [hmmlearn](https://hmmlearn.readthedocs.io/en/latest/)
@@ -27,8 +28,8 @@ Classifying English spoken digit by Hidden Markov Model
 * Evaluate the model
 
 # Hands on code
-
-* Parsing data and extract feature from them in this way (0.20 % for test)
+this is for lazy progrmmer and easy understand whole of project at one look.
+* ## Parsing data and extract feature from them in this way (0.20 % for test)
 ```python
 def build_dataset(sound_path='spoken_digit/'):
     files = sorted(os.listdir(sound_path))
@@ -55,7 +56,7 @@ def build_dataset(sound_path='spoken_digit/'):
 
 x_train, y_train, x_test, y_test, data = build_dataset()
 ```
-* we give data to train hmm
+* ## we give data to train hmm
 ```python
 def train_model(data):
     learned_hmm = dict()
@@ -72,18 +73,18 @@ learned_hmm = train_model(data)
 
 ```
 
-* Save learned hmm to pickle and Speed up the test phase (after first run comment this lines) :
+* ## Save learned hmm to pickle and Speed up the test phase (after first run comment this lines) :
 ```python
 with open("learned.pkl", "wb") as file:
      pickle.dump(learned_hmm, file)
 ```
-* clever guy can guess this step ;) -> read from pickle:
+* ## clever guy can guess this step ;) -> read from pickle:
  ```python
  with open("learned.pkl", "rb") as file:
     learned_hmm = pickle.load(file)
 ```
 
-* prediction:
+* ## prediction:
 ```python
 def prediction(test_data, trained):
     # predict list of test
@@ -107,7 +108,7 @@ y_pred = prediction(x_test, learned_hmm)
 
 ```
 
-* Best part is evaluate our model:
+* ## Best part is evaluate our model:
 ```python
 def report(y_test, y_pred, show_cm=True):
     print("confusion_matrix:\n\n", confusion_matrix(y_test, y_pred))
@@ -124,5 +125,5 @@ def report(y_test, y_pred, show_cm=True):
 
 report(y_test, y_pred, show_cm=True)
 ```
-if show_cm is True , i'll  magically plot a cool confusion matrix for U <3:
-
+if show_cm is True , i'll  magically plot a cool confusion matrix for U <3.
+<p align="center"><img width=40% src="https://github.com/ralireza/spoken-digit-recognition/blob/master/cm.png"></p>
