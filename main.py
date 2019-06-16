@@ -8,6 +8,7 @@ from scipy.io import wavfile
 from python_speech_features import mfcc, logfbank, delta
 import matplotlib.pyplot as plt
 import pickle
+import speech_recognition as sr
 
 
 def build_dataset(sound_path='spoken_digit/', fe="delta"):
@@ -118,6 +119,10 @@ x_train, y_train, x_test, y_test, data = build_dataset()
 
 with open("learned.pkl", "rb") as file:
     learned_hmm = pickle.load(file)
-y_pred = prediction(x_test, learned_hmm)
+# single_test = feature_extractor('./1.wav')
 
+
+y_pred = prediction(x_test, learned_hmm)
 report(y_test, y_pred, show_cm=True)
+y_pred = prediction(x_test, learned_hmm)
+print(y_pred)
