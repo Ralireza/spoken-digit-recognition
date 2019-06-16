@@ -55,7 +55,7 @@ def build_dataset(sound_path='spoken_digit/'):
 
 x_train, y_train, x_test, y_test, data = build_dataset()
 ```
-* we give data to train hmm
+* ## we give data to train hmm
 ```python
 def train_model(data):
     learned_hmm = dict()
@@ -72,18 +72,18 @@ learned_hmm = train_model(data)
 
 ```
 
-* Save learned hmm to pickle and Speed up the test phase (after first run comment this lines) :
+* ## Save learned hmm to pickle and Speed up the test phase (after first run comment this lines) :
 ```python
 with open("learned.pkl", "wb") as file:
      pickle.dump(learned_hmm, file)
 ```
-* clever guy can guess this step ;) -> read from pickle:
+* ## clever guy can guess this step ;) -> read from pickle:
  ```python
  with open("learned.pkl", "rb") as file:
     learned_hmm = pickle.load(file)
 ```
 
-* prediction:
+* ## prediction:
 ```python
 def prediction(test_data, trained):
     # predict list of test
@@ -107,7 +107,7 @@ y_pred = prediction(x_test, learned_hmm)
 
 ```
 
-* Best part is evaluate our model:
+* ## Best part is evaluate our model:
 ```python
 def report(y_test, y_pred, show_cm=True):
     print("confusion_matrix:\n\n", confusion_matrix(y_test, y_pred))
