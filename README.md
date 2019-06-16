@@ -28,7 +28,7 @@ Classifying English spoken digit by Hidden Markov Model
 
 # Hands on code
 
-* Parsing data and extract feature from them in this way (0.20 % for test)
+* ## Parsing data and extract feature from them in this way (0.20 % for test)
 ```python
 def build_dataset(sound_path='spoken_digit/'):
     files = sorted(os.listdir(sound_path))
@@ -125,3 +125,4 @@ def report(y_test, y_pred, show_cm=True):
 report(y_test, y_pred, show_cm=True)
 ```
 if show_cm is True , i'll  magically plot a cool confusion matrix for U <3.
+<p align="center"><img width=40% src="https://github.com/ralireza/spoken-digit-recognition/blob/master/cm.png"></p>
