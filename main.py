@@ -32,3 +32,10 @@ def build_dataset(sound_path='spoken_digit/', fe="delta"):
     for i in range(0, len(x_train), len(x_train) // 10):
         data[y_train[i]] = x_train[i:i + len(x_train) // 10]
     return x_train, y_train, x_test, y_test, data
+
+
+def feature_extractor(sound_path):
+    sampling_freq, audio = wavfile.read(sound_path)
+    mfcc_features = mfcc(audio, sampling_freq)
+
+    return mfcc_features
