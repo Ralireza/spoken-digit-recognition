@@ -85,3 +85,15 @@ def plot_confusion_matrix(cm, classes,
     plt.xlabel('Predicted label')
     plt.show()
 
+def report(y_test, y_pred, show_cm=True):
+    print("confusion_matrix:\n\n", confusion_matrix(y_test, y_pred))
+    print("----------------------------------------------------------")
+    print("----------------------------------------------------------\n")
+    print("classification_report:\n\n", classification_report(y_test, y_pred))
+    print("----------------------------------------------------------")
+    print("----------------------------------------------------------\n")
+    print("Accuracy:", accuracy_score(y_test, y_pred))
+    print("----------------------------------------------------------")
+    print("----------------------------------------------------------\n")
+    if show_cm:
+        plot_confusion_matrix(confusion_matrix(y_test, y_pred), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
