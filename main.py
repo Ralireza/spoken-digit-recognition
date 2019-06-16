@@ -39,3 +39,14 @@ def feature_extractor(sound_path):
     mfcc_features = mfcc(audio, sampling_freq)
 
     return mfcc_features
+
+def train_model(data):
+    learned_hmm = dict()
+    for label in data.keys():
+        model = hmm.GMMHMM(n_components=5)
+        feature = np.ndarray(shape=(1, 13))
+        for list_feature in data[label]:
+            feature = np.vstack((feature, list_feature))
+        obj = model.fit(feature)
+        learned_hmm[label] = obj
+    return learned_hmm
