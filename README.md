@@ -20,6 +20,7 @@ Classifying English spoken digit by Hidden Markov Model
 
 
 ## General Step
+this is for curious guys and implement by themselves.
 * Downlaod dataset from [Kaggle](https://www.kaggle.com/divyanshu99/spoken-digit-dataset)
 * Extract feature of each data with mfcc
 * Train Hmm states by [hmmlearn](https://hmmlearn.readthedocs.io/en/latest/)
@@ -27,7 +28,7 @@ Classifying English spoken digit by Hidden Markov Model
 * Evaluate the model
 
 # Hands on code
-
+this is for lazy progrmmer and easy understand whole of project at one look.
 * ## Parsing data and extract feature from them in this way (0.20 % for test)
 ```python
 def build_dataset(sound_path='spoken_digit/'):
