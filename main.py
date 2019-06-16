@@ -50,3 +50,14 @@ def train_model(data):
         obj = model.fit(feature)
         learned_hmm[label] = obj
     return learned_hmm
+
+
+def prediction(test_data):
+    predict_label = []
+    for test in test_data:
+        scores = []
+        for node in learned_hmm.keys():
+            scores.append(learned_hmm[node].score(test))
+        predict_label.append(scores.index(max(scores)))
+    return predict_label
+
