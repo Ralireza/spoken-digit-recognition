@@ -18,6 +18,8 @@ Classifying English spoken digit by Hidden Markov Model
 # Feature Extractor
 [MFCC](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum) - Mel-frequency Cepstrum
 
+# Accuracy
+0.98%
 
 ## General Step
 this is for curious guys and implement by themselves.
@@ -127,3 +129,5 @@ report(y_test, y_pred, show_cm=True)
 ```
 if show_cm is True , i'll  magically plot a cool confusion matrix for U <3.
 <p align="center"><img width=40% src="https://github.com/ralireza/spoken-digit-recognition/blob/master/cm.png"></p>
+
+Special thanks to my dear friend [samadvalipour](https://github.com/samadvalipour)
