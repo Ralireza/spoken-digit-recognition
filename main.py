@@ -40,6 +40,7 @@ def feature_extractor(sound_path):
 
     return mfcc_features
 
+
 def train_model(data):
     learned_hmm = dict()
     for label in data.keys():
@@ -52,7 +53,7 @@ def train_model(data):
     return learned_hmm
 
 
-def prediction(test_data):
+def prediction(test_data,learned_hmm):
     predict_label = []
     for test in test_data:
         scores = []
@@ -85,6 +86,7 @@ def plot_confusion_matrix(cm, classes,
     plt.xlabel('Predicted label')
     plt.show()
 
+
 def report(y_test, y_pred, show_cm=True):
     print("confusion_matrix:\n\n", confusion_matrix(y_test, y_pred))
     print("----------------------------------------------------------")
@@ -97,3 +99,12 @@ def report(y_test, y_pred, show_cm=True):
     print("----------------------------------------------------------\n")
     if show_cm:
         plot_confusion_matrix(confusion_matrix(y_test, y_pred), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+
+x_train, y_train, x_test, y_test, data = build_dataset()
+
+learned_hmm = train_model(data)
+
+y_pred = prediction(x_test,learned_hmm)
+
+report(y_test, y_pred, show_cm=True)
