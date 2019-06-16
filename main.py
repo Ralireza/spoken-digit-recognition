@@ -7,6 +7,7 @@ from hmmlearn import hmm
 from scipy.io import wavfile
 from python_speech_features import mfcc, logfbank, delta
 import matplotlib.pyplot as plt
+import pickle
 
 
 def build_dataset(sound_path='spoken_digit/', fe="delta"):
@@ -44,7 +45,7 @@ def feature_extractor(sound_path):
 def train_model(data):
     learned_hmm = dict()
     for label in data.keys():
-        model = hmm.GMMHMM(n_components=5)
+        model = hmm.GMMHMM(n_components=14)
         feature = np.ndarray(shape=(1, 13))
         for list_feature in data[label]:
             feature = np.vstack((feature, list_feature))
@@ -53,12 +54,20 @@ def train_model(data):
     return learned_hmm
 
 
-def prediction(test_data,learned_hmm):
+def prediction(test_data, trained):
+    # predict list of test
     predict_label = []
-    for test in test_data:
+    if type(test_data) == type([]):
+        for test in test_data:
+            scores = []
+            for node in trained.keys():
+                scores.append(trained[node].score(test))
+            predict_label.append(scores.index(max(scores)))
+    # predict a test
+    else:
         scores = []
-        for node in learned_hmm.keys():
-            scores.append(learned_hmm[node].score(test))
+        for node in trained.keys():
+            scores.append(trained[node].score(test_data))
         predict_label.append(scores.index(max(scores)))
     return predict_label
 
@@ -102,9 +111,13 @@ def report(y_test, y_pred, show_cm=True):
 
 
 x_train, y_train, x_test, y_test, data = build_dataset()
+#
+# learned_hmm = train_model(data)
+# with open("learned.pkl", "wb") as file:
+#     pickle.dump(learned_hmm, file)
 
-learned_hmm = train_model(data)
-
-y_pred = prediction(x_test,learned_hmm)
+with open("learned.pkl", "rb") as file:
+    learned_hmm = pickle.load(file)
+y_pred = prediction(x_test, learned_hmm)
 
 report(y_test, y_pred, show_cm=True)
