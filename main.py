@@ -1,6 +1,5 @@
 import itertools
 import os
-from FeatureExtractor import FeatureExtractor
 import numpy as np
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 from hmmlearn import hmm
@@ -11,8 +10,7 @@ import pickle
 import speech_recognition as sr
 
 
-def build_dataset(sound_path='spoken_digit/', fe="delta"):
-    feature_class = FeatureExtractor()
+def build_dataset(sound_path='spoken_digit/'):
     files = sorted(os.listdir(sound_path))
     x_train = []
     y_train = []
@@ -119,10 +117,10 @@ x_train, y_train, x_test, y_test, data = build_dataset()
 
 with open("learned.pkl", "rb") as file:
     learned_hmm = pickle.load(file)
-# single_test = feature_extractor('./1.wav')
+single_test = feature_extractor('./1-1.wav')
 
 
-y_pred = prediction(x_test, learned_hmm)
-report(y_test, y_pred, show_cm=True)
-y_pred = prediction(x_test, learned_hmm)
+# y_pred = prediction(x_test, learned_hmm)
+# report(y_test, y_pred, show_cm=True)
+y_pred = prediction(single_test, learned_hmm)
 print(y_pred)
