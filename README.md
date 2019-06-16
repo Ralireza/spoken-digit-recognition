@@ -18,6 +18,8 @@ Classifying English spoken digit by Hidden Markov Model
 # Feature Extractor
 [MFCC](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum) - Mel-frequency Cepstrum
 
+# Accuracy
+0.98%
 
 ## General Step
 this is for curious guys and implement by themselves.
