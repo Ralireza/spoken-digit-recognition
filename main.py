@@ -7,7 +7,6 @@ from scipy.io import wavfile
 from python_speech_features import mfcc, logfbank, delta
 import matplotlib.pyplot as plt
 import pickle
-import speech_recognition as sr
 
 
 def build_dataset(sound_path='spoken_digit/'):
