@@ -124,4 +124,5 @@ def report(y_test, y_pred, show_cm=True):
 
 report(y_test, y_pred, show_cm=True)
 ```
-if show_cm is True , i'll  magically plot a cool confusion matrix for U <3.
+if show_cm is True , i'll  magically plot a cool confusion matrix for U <3:
+
