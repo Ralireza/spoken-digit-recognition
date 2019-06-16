@@ -129,4 +129,5 @@ report(y_test, y_pred, show_cm=True)
 ```
 if show_cm is True , i'll  magically plot a cool confusion matrix for U <3.
 <p align="center"><img width=40% src="https://github.com/ralireza/spoken-digit-recognition/blob/master/cm.png"></p>
-#### Special thanks to [@samadvalipour](https://github.com/samadvalipour)
+
+Special thanks to my dear friend [samadvalipour](https://github.com/samadvalipour)
